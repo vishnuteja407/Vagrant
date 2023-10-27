@@ -1,0 +1,31 @@
+
+Install Vagrant
+
+MAC
+brew install --cask virtualbox (Not For MacOs M1/M2)
+brew install --cask vagrant
+brew install --cask vagrant-manager
+
+Windows
+
+Install chocolatey from the instructions given in the link below.
+https://chocolatey.org/docs/installation
+
+choco install virtualbox --version=7.0.8 -y
+choco install vagrant --version=2.3.4 -y
+
+Vagrant commands
+
+vagrant up
+vagrant status
+vagrant ssh
+vagrant halt
+vagrant reload
+vagrant destroy
+vagrant box list
+vagrant global-status
+vagrant global-status --prune
+vagrant reload --provision
+
+vagrant up <vm-name>
+vagrant ssh <vm-name>
