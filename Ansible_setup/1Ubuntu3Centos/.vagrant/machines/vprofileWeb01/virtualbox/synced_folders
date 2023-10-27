@@ -1,0 +1,1 @@
+{"rsync":{"/vagrant":{"type":"rsync","guestpath":"/vagrant","hostpath":"/Users/vibodapa/Desktop/devops/Ansible_setup/1Ubuntu3Centos","disabled":false,"__vagrantfile":true,"owner":"vagrant","group":"vagrant"}}}

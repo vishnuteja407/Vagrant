@@ -1,0 +1,63 @@
+Vagrant.configure("2") do |config|
+
+    config.vm.define "control" do |control|
+        control.vm.box = "generic/ubuntu2204"
+        control.vm.network "private_network", ip: "192.168.10.21"
+        control.vm.network "public_network", bridge: "en0: Wi-Fi"
+        control.vm.synced_folder "/Users/vibodapa/Desktop/scripts/Ansible", "/home/vagrant/vprofile_backup"
+        control.vm.hostname = "control"
+        control.vm.provider "virtualbox" do |vb|
+            vb.memory = "1024"
+        end
+        control.vm.provision "shell", inline: <<-SHELL
+            sudo apt update
+            sudo apt install software-properties-common 
+            sudo add-apt-repository --yes --update ppa:ansible/ansible
+            sudo apt install ansible -y
+            ansible --version
+        SHELL
+    end
+    
+  
+    config.vm.define "vprofileWeb01" do |vprofileWeb01|
+        vprofileWeb01.vm.box = "eurolinux-vagrant/centos-stream-9"
+        vprofileWeb01.vm.network "private_network", ip: "192.168.10.22"
+        vprofileWeb01.vm.network "public_network", bridge: "en0: Wi-Fi"
+        vprofileWeb01.vm.hostname = "vprofileWeb01"
+        vprofileWeb01.vm.provider "virtualbox" do |vb|
+            vb.memory = "1024"
+        end
+    end
+    
+    config.vm.define "vprofileWeb02" do |vprofileWeb02|
+        vprofileWeb02.vm.box = "eurolinux-vagrant/centos-stream-9"
+        vprofileWeb02.vm.network "private_network", ip: "192.168.10.23"
+        vprofileWeb02.vm.network "public_network", bridge: "en0: Wi-Fi"
+        vprofileWeb02.vm.hostname = "vprofileWeb02"
+        vprofileWeb02.vm.provider "virtualbox" do |vb|
+            vb.memory = "1024"
+        end
+    end
+  
+     config.vm.define "vprofiledb01" do |vprofiledb01|
+        vprofiledb01.vm.box = "eurolinux-vagrant/centos-stream-9"
+        vprofiledb01.vm.network "private_network", ip: "192.168.10.24"
+        vprofiledb01.vm.network "public_network", bridge: "en0: Wi-Fi"
+        vprofiledb01.vm.hostname = "vprofiledb01"
+        vprofiledb01.vm.provider "virtualbox" do |vb|
+            vb.memory = "1024"
+        end
+    end
+
+    config.vm.define "vprofileWeb03" do |vprofileWeb03|
+        vprofileWeb03.vm.box = "generic/ubuntu2204"
+        vprofileWeb03.vm.network "private_network", ip: "192.168.10.25"
+        vprofileWeb03.vm.network "public_network", bridge: "en0: Wi-Fi"
+        vprofileWeb03.vm.hostname = "vprofileWeb03"
+        vprofileWeb03.vm.provider "virtualbox" do |vb|
+            vb.memory = "1024"
+        end
+    end
+
+  end
+  
